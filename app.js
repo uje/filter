@@ -5,9 +5,10 @@ const forward = require('express-http-proxy');
 const app = express();
 
 app.use((request, response, next) => {
-  // if (request.path !== "/s") {
-  //   return next();
-  // }
+  if (request.path !== "/s") {
+    forward(`https://www.baidu.com/${request.url}`)(request, response, next);
+    return;
+  }
 
   response.send(request.url);
 });
