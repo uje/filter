@@ -1,12 +1,13 @@
 #!/usr/bin/env node
 
 const express = require("express");
+const forward = require('express-http-proxy');
 const app = express();
 
 app.use((request, response, next) => {
-  if (request.path !== "/s") {
-    return next();
-  }
+  // if (request.path !== "/s") {
+  //   return next();
+  // }
 
   response.send(request.path);
 });
