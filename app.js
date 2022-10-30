@@ -10,7 +10,7 @@ app.use((request, response, next) => {
     return;
   }
 
-  response.send(request.url);
+  response.send(request.query.wd);
 });
 
 app.listen("10086", () => {
