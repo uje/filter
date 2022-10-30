@@ -7,7 +7,7 @@ const forward = require('express-http-proxy');
 const app = express();
 
 app.use((request, response, next) => {
-  const wd = decodeURIComponent(request.query.wd);
+  const wd = decodeURIComponent(request.query.wd || request.query.word);
 
   response.send(`isPath: ${request.path.endsWith('/s')}, path: ${request.path}, isKey: ${['间谍', '监听', '监视', '组织', '跟踪', '尾随'].includes(wd) === false}, wd: ${wd}`);
   return;
