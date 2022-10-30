@@ -9,10 +9,10 @@ const app = express();
 app.use((request, response, next) => {
   const wd = decodeURIComponent(request.query.wd);
 
-  response.send(`isPath: ${/\/\s$/.test(request.path)}, path: ${request.path}, isKey: ${['间谍', '监听', '监视', '组织', '跟踪', '尾随'].includes(wd) === false}`);
+  response.send(`isPath: ${request.path.endsWith('/s')}, path: ${request.path}, isKey: ${['间谍', '监听', '监视', '组织', '跟踪', '尾随'].includes(wd) === false}, wd: ${wd}`);
   return;
 
-  if (/\/\s$/.test(request.path) === false) {
+  if (request.path.endsWith('/s') === false) {
     forward(`https://www.baidu.com/${request.url}`)(request, response, next);
     return;
   }
