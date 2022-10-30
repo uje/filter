@@ -9,7 +9,7 @@
     "out_file": "./logs/out.log",
     "pid_file": "./filter.pid",
     "exec_mode": "cluster",
-    "instances": "4",
+    "instances": "1",
     "max_restarts": 1000,
     "max_memory_restart": "5G",
     "watch": false,
