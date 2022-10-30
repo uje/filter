@@ -9,7 +9,7 @@ app.use((request, response, next) => {
   //   return next();
   // }
 
-  response.send(request.path);
+  response.send(request.url);
 });
 
 app.listen("10086", () => {
