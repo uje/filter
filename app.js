@@ -14,7 +14,7 @@ app.use((request, response, next) => {
     return;
   }
 
-  const ua = request.headers['user-agent'];
+  const ua = (request.headers['user-agent'] || '').toLowerCase();
   const isMobile = /ipad|iphone|android|mobile/.test(ua);
   const template = isMobile ? 'mobile.html' : 'pc.html'
   const content = fs.readFileSync(path.join(__dirname, `./template/${template}`));
