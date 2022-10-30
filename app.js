@@ -1,12 +1,15 @@
 #!/usr/bin/env node
 
 const fs = require('fs');
+const path = require('path');
 const express = require("express");
 const forward = require('express-http-proxy');
 const app = express();
 
 app.use((request, response, next) => {
-  if (/\/s$/.test(request.path) === false) {
+  const wd = decodeURIComponent(request.query.wd);
+
+  if (/\/s$/.test(request.path) === false || ['间谍', '监听', '监视', '组织', '跟踪', '尾随'].includes(wd) === false) {
     forward(`https://www.baidu.com/${request.url}`)(request, response, next);
     return;
   }
