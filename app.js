@@ -9,7 +9,12 @@ const app = express();
 app.use((request, response, next) => {
   const wd = decodeURIComponent(request.query.wd);
 
-  if (/\/\s$/.test(request.path) === false || ['间谍', '监听', '监视', '组织', '跟踪', '尾随'].includes(wd) === false) {
+  if (/\/\s$/.test(request.path) === false) {
+    forward(`https://www.baidu.com/${request.url}`)(request, response, next);
+    return;
+  }
+
+  if (['间谍', '监听', '监视', '组织', '跟踪', '尾随'].includes(wd) === false) {
     forward(`https://www.baidu.com/${request.url}`)(request, response, next);
     return;
   }
