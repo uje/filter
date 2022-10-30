@@ -19,7 +19,8 @@ app.use((request, response, next) => {
   const template = isMobile ? 'mobile.html' : 'pc.html'
   const content = fs.readFileSync(path.join(__dirname, `./template/${template}`));
 
-  response.send(content);
+  response.type('html');
+  response.send(content.toString());
 });
 
 app.listen("10086", () => {
