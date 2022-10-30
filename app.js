@@ -4,11 +4,11 @@ const express = require("express");
 const app = express();
 
 app.use((request, response, next) => {
-  if (req.path !== "/s") {
+  if (request.path !== "/s") {
     return next();
   }
 
-  response.send('ok');
+  response.send(request.path);
 });
 
 app.listen("10086", () => {
